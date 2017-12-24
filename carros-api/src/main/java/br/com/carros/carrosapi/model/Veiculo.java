@@ -1,7 +1,5 @@
 package br.com.carros.carrosapi.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -18,10 +16,10 @@ public class Veiculo extends BaseEntity {
 	private String modelo;
 	
 	@Column(name = "ano_fabricacao")
-	private LocalDate anoFabricacao;
+	private String anoFabricacao;
 	
 	@Column(name = "ano_modelo")
-	private LocalDate anoModelo;
+	private String anoModelo;
 	private String placa;
 	private String cor;
 	
@@ -32,7 +30,7 @@ public class Veiculo extends BaseEntity {
 	
 	public Veiculo() {}
 	
-	public Veiculo(String modelo, LocalDate anoFabricacao, LocalDate anoModelo, String placa, String cor, Marca marca) {
+	public Veiculo(String modelo, String anoFabricacao, String anoModelo, String placa, String cor, Marca marca) {
 		this.modelo = modelo;
 		this.anoFabricacao = anoFabricacao;
 		this.anoModelo = anoModelo;
@@ -54,16 +52,16 @@ public class Veiculo extends BaseEntity {
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
-	public LocalDate getAnoFabricacao() {
+	public String getAnoFabricacao() {
 		return anoFabricacao;
 	}
-	public void setAnoFabricacao(LocalDate anoFabricacao) {
+	public void setAnoFabricacao(String anoFabricacao) {
 		this.anoFabricacao = anoFabricacao;
 	}
-	public LocalDate getAnoModelo() {
+	public String getAnoModelo() {
 		return anoModelo;
 	}
-	public void setAnoModelo(LocalDate anoModelo) {
+	public void setAnoModelo(String anoModelo) {
 		this.anoModelo = anoModelo;
 	}
 	public String getPlaca() {

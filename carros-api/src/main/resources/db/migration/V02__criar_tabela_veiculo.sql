@@ -1,8 +1,8 @@
 CREATE TABLE veiculo (
 	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
 	modelo VARCHAR(20),
-	ano_fabricacao DATE,
-	ano_modelo DATE,
+	ano_fabricacao VARCHAR(4),
+	ano_modelo VARCHAR(4),
 	placa VARCHAR(8),
 	cor VARCHAR(10),
 	id_marca BIGINT(20) NOT NULL,
