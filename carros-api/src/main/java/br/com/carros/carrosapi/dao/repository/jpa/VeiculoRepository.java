@@ -1,4 +1,4 @@
-package br.com.carros.carrosapi.repository;
+package br.com.carros.carrosapi.dao.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

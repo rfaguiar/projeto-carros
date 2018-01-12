@@ -18,9 +18,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
 
+import br.com.carros.carrosapi.dao.VeiculoDAO;
 import br.com.carros.carrosapi.model.Marca;
 import br.com.carros.carrosapi.model.Veiculo;
-import br.com.carros.carrosapi.repository.VeiculoRepository;
 
 public class VeiculoResourceTest {
 	
@@ -28,7 +28,7 @@ public class VeiculoResourceTest {
 	private VeiculoResource veiculoRs = new VeiculoResource();
 
 	@Mock
-	private VeiculoRepository veiculoRepo;
+	private VeiculoDAO dao;
 	
 	@Mock
 	private ApplicationEventPublisher publisher;
@@ -47,7 +47,7 @@ public class VeiculoResourceTest {
 		veiculo.setId(1l);
 		List<Veiculo> veiculos = new ArrayList<>();
 		veiculos.add(veiculo);
-		when(veiculoRepo.findAll()).thenReturn(veiculos);
+		when(dao.buscarTodos()).thenReturn(veiculos);
 		
 		List<Veiculo> response = veiculoRs.todos();
 		
@@ -66,7 +66,7 @@ public class VeiculoResourceTest {
 	public void quandoRealizarAConsultaComIdValidoDeveRetornarORegistroECodigo200() {
 		Veiculo veiculo = new Veiculo("palio", "2006", "2006", "XXX-9999", "preto", new Marca("fiat"));
 		veiculo.setId(1l);
-		when(veiculoRepo.findOne(anyLong())).thenReturn(veiculo);
+		when(dao.buscarPor(anyLong())).thenReturn(veiculo);
 		
 		ResponseEntity<Veiculo> response = veiculoRs.porId(1l);
 		
@@ -85,7 +85,7 @@ public class VeiculoResourceTest {
 	
 	@Test
 	public void quandoRealizarAConsultaComIdInvalidoDeveRetornarnuloECodigo404() {
-		when(veiculoRepo.findOne(anyLong())).thenReturn(null);
+		when(dao.buscarPor(anyLong())).thenReturn(null);
 		
 		ResponseEntity<Veiculo> response = veiculoRs.porId(1l);
 		
@@ -100,7 +100,7 @@ public class VeiculoResourceTest {
 	public void quandoSalvarODeveRetornarORegistroECodigo201EHeaderLocationComLink() {
 		Veiculo veiculo = new Veiculo("palio", "2006", "2006", "XXX-9999", "preto", new Marca("fiat"));
 		veiculo.setId(1l);
-		when(veiculoRepo.save(veiculo)).thenReturn(veiculo);
+		when(dao.salvar(veiculo)).thenReturn(veiculo);
 								
 		ResponseEntity<Veiculo> response = veiculoRs.criar(veiculo, httpResponse);
 		
