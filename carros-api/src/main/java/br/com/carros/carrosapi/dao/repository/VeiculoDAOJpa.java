@@ -1,23 +1,24 @@
 package br.com.carros.carrosapi.dao.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import br.com.carros.carrosapi.dao.VeiculoDAO;
+import br.com.carros.carrosapi.dao.repository.jpa.VeiculoJpa;
+import br.com.carros.carrosapi.dao.repository.jpa.VeiculoRepository;
 import br.com.carros.carrosapi.model.Veiculo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class VeiculoDAOJpa implements VeiculoDAO {
 
 	@Autowired
-	private JpaRepository<Veiculo, Long> jpaRepo;
+	private VeiculoRepository jpaRepo;
 
 	@Override
 	public List<Veiculo> buscarTodos() {
-		return jpaRepo.findAll();
+		return new ArrayList<>(jpaRepo.findAll());
 	}
 
 	@Override
@@ -27,7 +28,7 @@ public class VeiculoDAOJpa implements VeiculoDAO {
 
 	@Override
 	public Veiculo salvar(Veiculo veiculo) {
-		return jpaRepo.save(veiculo);
+		return jpaRepo.save(new VeiculoJpa(veiculo));
 	}
 
 	@Override

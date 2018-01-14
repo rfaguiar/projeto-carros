@@ -1,11 +1,6 @@
 package br.com.carros.carrosapi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "usuario")
-public class Usuario extends BaseEntity {
+public class Usuario extends Base {
 
 	private static final long serialVersionUID = 1L;
 

@@ -2,28 +2,20 @@ package br.com.carros.carrosapi.model;
 
 import java.io.Serializable;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-
 /**
  * Entity base para modelar entidades com id default
  * 
  * @author rogerio
  *
  */
-@MappedSuperclass
-abstract class BaseEntity implements Serializable, Comparable<BaseEntity> {
+abstract class Base implements Serializable, Comparable<Base> {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long id;	
 	
-	public int compareTo(BaseEntity entity) {
-		return this.id.compareTo(entity.getId());
+	public int compareTo(Base base) {
+		return this.id.compareTo(base.getId());
 	}
 	
 	@Override
@@ -47,7 +39,7 @@ abstract class BaseEntity implements Serializable, Comparable<BaseEntity> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BaseEntity other = (BaseEntity) obj;
+		Base other = (Base) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

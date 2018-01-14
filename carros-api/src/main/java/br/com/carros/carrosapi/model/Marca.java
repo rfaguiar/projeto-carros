@@ -1,11 +1,6 @@
 package br.com.carros.carrosapi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "marca")
-public class Marca extends BaseEntity {
+public class Marca extends Base {
 
 	private static final long serialVersionUID = 1L;
 	

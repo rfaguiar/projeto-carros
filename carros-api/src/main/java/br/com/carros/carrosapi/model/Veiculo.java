@@ -1,31 +1,18 @@
 package br.com.carros.carrosapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "veiculo")
-public class Veiculo extends BaseEntity {
+public class Veiculo extends Base {
 
 	private static final long serialVersionUID = 1L;
 	
 	private String modelo;
-	
-	@Column(name = "ano_fabricacao")
 	private String anoFabricacao;
-	
-	@Column(name = "ano_modelo")
 	private String anoModelo;
 	private String placa;
 	private String cor;
 	
 	@NotNull
-	@ManyToOne
-	@JoinColumn(name = "id_marca")
 	private Marca marca;
 	
 	public Veiculo() {}
