@@ -23,14 +23,11 @@ import br.com.carros.carrosapi.model.Veiculo;
 
 @RestController
 @RequestMapping("/veiculos")
-public class VeiculoResource {
+public class VeiculoResource extends BaseResource {
 
 	@Autowired
 	private VeiculoDAO service;
 
-	@Autowired
-	private ApplicationEventPublisher publisher;
-	
 	@GetMapping
 	public List<Veiculo> todos() {
 		return this.service.buscarTodos();
