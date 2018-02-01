@@ -31,37 +31,44 @@ public class VeiculoJpa extends Veiculo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Override
 	public Long getId() {
 		return super.getId();
 	}
 
     @Column(name="modelo")
+	@Override
 	public String getModelo() {
 		return super.getModelo();
 	}
 
 	@Column(name = "ano_fabricacao")
+	@Override
 	public String getAnoFabricacao() {
 		return super.getAnoFabricacao();
 	}
 	
 	@Column(name = "ano_modelo")
+	@Override
 	public String getAnoModelo() {
 		return super.getAnoModelo();
 	}
 
 	@Column(name="placa")
+	@Override
 	public String getPlaca() {
 		return super.getPlaca();
 	}
 
     @Column(name="cor")
+	@Override
 	public String getCor() {
 		return super.getCor();
 	}
 
 	@ManyToOne
 	@JoinColumn(name = "id_marca")
+	@Override
 	public MarcaJpa getMarca() {
 		return new MarcaJpa(super.getMarca());
 	}

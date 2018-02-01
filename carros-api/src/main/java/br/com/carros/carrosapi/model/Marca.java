@@ -17,6 +17,24 @@ public class Marca extends Base {
 		return "Marca ["+ super.toString() +"nome=" + nome + "]";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Marca)) return false;
+		if (!super.equals(o)) return false;
+
+		Marca marca = (Marca) o;
+
+		return getNome() != null ? getNome().equals(marca.getNome()) : marca.getNome() == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + (getNome() != null ? getNome().hashCode() : 0);
+		return result;
+	}
+
 	public String getNome() {
 		return nome;
 	}

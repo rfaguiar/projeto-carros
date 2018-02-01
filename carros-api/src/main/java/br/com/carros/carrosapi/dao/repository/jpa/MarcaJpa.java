@@ -29,11 +29,13 @@ public class MarcaJpa extends Marca {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Override
 	public Long getId() {
 		return super.getId();
 	}
 
 	@Column(name="nome")
+	@Override
 	public String getNome() {
 		return super.getNome();
 	}

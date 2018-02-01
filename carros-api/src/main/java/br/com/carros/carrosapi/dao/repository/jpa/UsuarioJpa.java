@@ -28,21 +28,25 @@ public class UsuarioJpa extends Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Override
 	public Long getId() {
 		return super.getId();
 	}
 
 	@Column(name="nome")
+	@Override
 	public String getNome() {
 		return super.getNome();
 	}
 
 	@Column(name="login")
+	@Override
 	public String getLogin() {
 		return super.getLogin();
 	}
 
 	@Column(name="senha")
+	@Override
 	public String getSenha() {
 		return super.getSenha();
 	}

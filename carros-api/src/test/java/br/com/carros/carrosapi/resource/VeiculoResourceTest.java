@@ -40,6 +40,12 @@ public class VeiculoResourceTest {
 	public void init() {
 		MockitoAnnotations.initMocks(this);
 	}
+
+	@Test
+	public void quandoApagarUmVeiculoDeveRetornarCodigo204 () {
+		ResponseEntity<Void> response = veiculoRs.delete(1l);
+		assertEquals(204, response.getStatusCodeValue());
+	}
 	
 	@Test
 	public void quandoRealizarAConsultaDeveRetornarOsRegistrosECodigo200() {
