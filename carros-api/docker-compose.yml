@@ -1,11 +1,16 @@
 version: "3"
+
+networks:
+    minha-rede:
+      driver: bridge
+
 services:
-#docker run -d --name mysql-db -p 3307:3306 --network minha-rede -e MYSQL_ROOT_PASSWORD=root mysql:5.6
+#docker run -d --name mysql-db -p 3306:3306 --network minha-rede -e MYSQL_ROOT_PASSWORD=root mysql:5.6
   mysql-db:
     image: mysql:5.6
     container_name: mysql-db
     ports:
-      - "3307:3306"
+      - "3306:3306"
     networks:
       - minha-rede
     environment:
@@ -14,7 +19,7 @@ services:
 #docker run -d --network minha-rede --name carros-api-docker -p 8080:8080 carros-api/carros-api:latest
   carros-api-rest:
     build:
-      dockerfile: ./Dockerfile
+      dockerfile: ./dockerfile
       context: .
     image: carros-api/carros-api
     container_name: carros-api-rest
@@ -27,10 +32,7 @@ services:
     depends_on:
       - "mysql-db"
 
-networks:
-    minha-rede:
-      driver: bridge
 
-#####--- Compilar e rodar este arquivo no temrinal ---#####
+#####--- Compilar e rodar este arquivo no terminal ---#####
 #docker-compose build
 #docker-compose up -d
